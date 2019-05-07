@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "MaxResults": {
+                    "description": "Indicates the maximum number of items that you want in the response.",
+                    "maximum": 100,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "NextToken": {
+                    "description": "Paginates results. Set the value of this parameter to NULL on your first call to the GetEnabledStandards operation. For subsequent calls to the operation, fill nextToken in the request with the value of nextToken from the previous response to continue listing data.",
+                    "type": "string"
+                },
+                "StandardsSubscriptionArns": {
+                    "description": "The list of standards subscription ARNS that you want to list and describe.",
+                    "items": {
+                        "pattern": ".*\\S.*",
+                        "type": "string"
+                    },
+                    "maxItems": 25,
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

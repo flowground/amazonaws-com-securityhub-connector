@@ -1,0 +1,86 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "StandardsSubscriptionRequests": {
+                    "description": "The list of standards that you want to enable.",
+                    "items": {
+                        "description": "The standard that you want to enable.",
+                        "properties": {
+                            "StandardsArn": {
+                                "description": "The ARN of the standard that you want to enable.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "StandardsInput": {
+                                "description": "<p/>",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "StandardsArn"
+                        ],
+                        "type": "object"
+                    },
+                    "maxItems": 25,
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "StandardsSubscriptionRequests"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

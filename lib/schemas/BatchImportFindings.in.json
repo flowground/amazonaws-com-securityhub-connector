@@ -1,0 +1,725 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "Findings": {
+                    "description": "A list of findings that you want to import. Must be submitted in the AWSSecurityFinding format.",
+                    "items": {
+                        "description": "<p>Provides consistent format for the contents of the Security Hub-aggregated findings. AwsSecurityFinding format enables you to share findings between AWS security services and third-party solutions, and compliance checks.</p> <note> <p>A finding is a potential security issue generated either by AWS services (GuardDuty, Inspector, Macie) or by the integrated third-party solutions and compliance checks.</p> </note>",
+                        "properties": {
+                            "AwsAccountId": {
+                                "description": "The AWS account ID in which a finding is generated.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "Compliance": {
+                                "description": "This data type is exclusive to findings that are generated as the result of a check run against a specific rule in a supported standard (for example, AWS CIS Foundations). Contains compliance-related finding details.",
+                                "properties": {
+                                    "Status": {
+                                        "description": "Indicates the result of a compliance check.",
+                                        "enum": [
+                                            "PASSED",
+                                            "WARNING",
+                                            "FAILED",
+                                            "NOT_AVAILABLE"
+                                        ],
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "Confidence": {
+                                "description": "A finding's confidence. Confidence is defined as the likelihood that a finding accurately identifies the behavior or issue that it was intended to identify. Confidence is scored on a 0-100 basis using a ratio scale. 0 equates zero percent confidence and 100 equates to 100 percent confidence.",
+                                "type": "integer"
+                            },
+                            "CreatedAt": {
+                                "description": "An ISO8601-formatted timestamp that indicates when the potential security issue captured by a finding was created by the security findings provider.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "Criticality": {
+                                "description": "The level of importance assigned to the resources associated with the finding. A score of 0 means the underlying resources have no criticality, and a score of 100 is reserved for the most critical resources.",
+                                "type": "integer"
+                            },
+                            "Description": {
+                                "description": "A finding's description.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "FirstObservedAt": {
+                                "description": "An ISO8601-formatted timestamp that indicates when the potential security issue captured by a finding was first observed by the security findings provider.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "GeneratorId": {
+                                "description": "This is the identifier for the solution-specific component (a discrete unit of logic) that generated a finding. In various security findings provider's solutions, this generator can be called a rule, a check, a detector, a plug-in, etc. ",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "Id": {
+                                "description": "The security findings provider-specific identifier for a finding.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "LastObservedAt": {
+                                "description": "An ISO8601-formatted timestamp that indicates when the potential security issue captured by a finding was most recently observed by the security findings provider.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "Malware": {
+                                "description": "A list of malware related to a finding.",
+                                "items": {
+                                    "description": "A list of malware related to a finding.",
+                                    "properties": {
+                                        "Name": {
+                                            "description": "The name of the malware that was observed.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "Path": {
+                                            "description": "The filesystem path of the malware that was observed.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "State": {
+                                            "description": "The state of the malware that was observed.",
+                                            "enum": [
+                                                "OBSERVED",
+                                                "REMOVAL_FAILED",
+                                                "REMOVED"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "Type": {
+                                            "description": "The type of the malware that was observed.",
+                                            "enum": [
+                                                "ADWARE",
+                                                "BLENDED_THREAT",
+                                                "BOTNET_AGENT",
+                                                "COIN_MINER",
+                                                "EXPLOIT_KIT",
+                                                "KEYLOGGER",
+                                                "MACRO",
+                                                "POTENTIALLY_UNWANTED",
+                                                "SPYWARE",
+                                                "RANSOMWARE",
+                                                "REMOTE_ACCESS",
+                                                "ROOTKIT",
+                                                "TROJAN",
+                                                "VIRUS",
+                                                "WORM"
+                                            ],
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "Name"
+                                    ],
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "Network": {
+                                "description": "The details of network-related information about a finding.",
+                                "properties": {
+                                    "DestinationDomain": {
+                                        "description": "The destination domain of network-related information about a finding.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "DestinationIpV4": {
+                                        "description": "The destination IPv4 address of network-related information about a finding.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "DestinationIpV6": {
+                                        "description": "The destination IPv6 address of network-related information about a finding.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "DestinationPort": {
+                                        "description": "The destination port of network-related information about a finding.",
+                                        "type": "integer"
+                                    },
+                                    "Direction": {
+                                        "description": "Indicates the direction of network traffic associated with a finding.",
+                                        "enum": [
+                                            "IN",
+                                            "OUT"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Protocol": {
+                                        "description": "The protocol of network-related information about a finding.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "SourceDomain": {
+                                        "description": "The source domain of network-related information about a finding.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "SourceIpV4": {
+                                        "description": "The source IPv4 address of network-related information about a finding.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "SourceIpV6": {
+                                        "description": "The source IPv6 address of network-related information about a finding.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "SourceMac": {
+                                        "description": "The source media access control (MAC) address of network-related information about a finding.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "SourcePort": {
+                                        "description": "The source port of network-related information about a finding.",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "Note": {
+                                "description": "A user-defined note added to a finding.",
+                                "properties": {
+                                    "Text": {
+                                        "description": "The text of a note.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "UpdatedAt": {
+                                        "description": "The timestamp of when the note was updated.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "UpdatedBy": {
+                                        "description": "The principal that created a note.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "Text",
+                                    "UpdatedBy",
+                                    "UpdatedAt"
+                                ],
+                                "type": "object"
+                            },
+                            "Process": {
+                                "description": "The details of process-related information about a finding.",
+                                "properties": {
+                                    "LaunchedAt": {
+                                        "description": "The date/time that the process was launched.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Name": {
+                                        "description": "The name of the process.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "ParentPid": {
+                                        "description": "The parent process ID.",
+                                        "type": "integer"
+                                    },
+                                    "Path": {
+                                        "description": "The path to the process executable.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Pid": {
+                                        "description": "The process ID.",
+                                        "type": "integer"
+                                    },
+                                    "TerminatedAt": {
+                                        "description": "The date/time that the process was terminated.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "ProductArn": {
+                                "description": "The ARN generated by Security Hub that uniquely identifies a third-party company (security findings provider) once this provider's product (solution that generates findings) is registered with Security Hub. ",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "ProductFields": {
+                                "description": "A data type where security findings providers can include additional solution-specific details that are not part of the defined AwsSecurityFinding format.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "RecordState": {
+                                "description": "The record state of a finding.",
+                                "enum": [
+                                    "ACTIVE",
+                                    "ARCHIVED"
+                                ],
+                                "type": "string"
+                            },
+                            "RelatedFindings": {
+                                "description": "A list of related findings.",
+                                "items": {
+                                    "description": "Related finding's details.",
+                                    "properties": {
+                                        "Id": {
+                                            "description": "The solution-generated identifier for a related finding.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "ProductArn": {
+                                            "description": "The ARN of the solution that generated a related finding.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "ProductArn",
+                                        "Id"
+                                    ],
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "Remediation": {
+                                "description": "An data type that describes the remediation options for a finding.",
+                                "properties": {
+                                    "Recommendation": {
+                                        "description": "Provides a recommendation on how to remediate the issue identified within a finding.",
+                                        "properties": {
+                                            "Text": {
+                                                "description": "The recommendation of what to do about the issue described in a finding. ",
+                                                "pattern": ".*\\S.*",
+                                                "type": "string"
+                                            },
+                                            "Url": {
+                                                "description": "A URL to link to general remediation information for the finding type of a finding. ",
+                                                "pattern": ".*\\S.*",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "Resources": {
+                                "description": "A set of resource data types that describe the resources to which the finding refers.",
+                                "items": {
+                                    "description": "A resource data type that describes a resource to which the finding refers.",
+                                    "properties": {
+                                        "Details": {
+                                            "description": "Provides additional details about the resource.",
+                                            "properties": {
+                                                "AwsEc2Instance": {
+                                                    "description": "The details of an AWS EC2 instance.",
+                                                    "properties": {
+                                                        "IamInstanceProfileArn": {
+                                                            "description": "The IAM profile ARN of the instance.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "ImageId": {
+                                                            "description": "The Amazon Machine Image (AMI) ID of the instance.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "IpV4Addresses": {
+                                                            "description": "The IPv4 addresses associated with the instance.",
+                                                            "items": {
+                                                                "pattern": ".*\\S.*",
+                                                                "type": "string"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "IpV6Addresses": {
+                                                            "description": "The IPv6 addresses associated with the instance.",
+                                                            "items": {
+                                                                "pattern": ".*\\S.*",
+                                                                "type": "string"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "KeyName": {
+                                                            "description": "The key name associated with the instance.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "LaunchedAt": {
+                                                            "description": "The date/time the instance was launched.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "SubnetId": {
+                                                            "description": "The identifier of the subnet in which the instance was launched.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "Type": {
+                                                            "description": "The instance type of the instance. ",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "VpcId": {
+                                                            "description": "The identifier of the VPC in which the instance was launched.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "AwsIamAccessKey": {
+                                                    "description": "AWS IAM access key details related to a finding.",
+                                                    "properties": {
+                                                        "CreatedAt": {
+                                                            "description": "The creation date/time of the IAM access key related to a finding.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "Status": {
+                                                            "description": "The status of the IAM access key related to a finding.",
+                                                            "enum": [
+                                                                "Active",
+                                                                "Inactive"
+                                                            ],
+                                                            "type": "string"
+                                                        },
+                                                        "UserName": {
+                                                            "description": "The user associated with the IAM access key related to a finding.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "AwsS3Bucket": {
+                                                    "description": "The details of an AWS S3 Bucket.",
+                                                    "properties": {
+                                                        "OwnerId": {
+                                                            "description": "The canonical user ID of the owner of the S3 bucket.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "OwnerName": {
+                                                            "description": "The display name of the owner of the S3 bucket.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "Container": {
+                                                    "description": "Container details related to a finding.",
+                                                    "properties": {
+                                                        "ImageId": {
+                                                            "description": "The identifier of the image related to a finding.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "ImageName": {
+                                                            "description": "The name of the image related to a finding.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "LaunchedAt": {
+                                                            "description": "The date/time that the container was started.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        },
+                                                        "Name": {
+                                                            "description": "The name of the container related to a finding.",
+                                                            "pattern": ".*\\S.*",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "Other": {
+                                                    "description": "The details of a resource that does not have a specific sub-field for the resource type defined.",
+                                                    "items": {
+                                                        "properties": {
+                                                            "key": {
+                                                                "pattern": ".*\\S.*",
+                                                                "type": "string"
+                                                            },
+                                                            "value": {
+                                                                "pattern": ".*\\S.*",
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "Id": {
+                                            "description": "The canonical identifier for the given resource type.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "Partition": {
+                                            "description": "The canonical AWS partition name to which the region is assigned.",
+                                            "enum": [
+                                                "aws",
+                                                "aws-cn",
+                                                "aws-us-gov"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "Region": {
+                                            "description": "The canonical AWS external region name where this resource is located.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "Tags": {
+                                            "description": "A list of AWS tags associated with a resource at the time the finding was processed.",
+                                            "items": {
+                                                "properties": {
+                                                    "key": {
+                                                        "pattern": ".*\\S.*",
+                                                        "type": "string"
+                                                    },
+                                                    "value": {
+                                                        "pattern": ".*\\S.*",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "Type": {
+                                            "description": "Specifies the type of the resource for which details are provided.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "Type",
+                                        "Id"
+                                    ],
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "SchemaVersion": {
+                                "description": "The schema version for which a finding is formatted.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "Severity": {
+                                "description": "A finding's severity.",
+                                "properties": {
+                                    "Normalized": {
+                                        "description": "The normalized severity of a finding.",
+                                        "type": "integer"
+                                    },
+                                    "Product": {
+                                        "description": "The native severity as defined by the security findings provider's solution that generated the finding.",
+                                        "format": "double",
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "Normalized"
+                                ],
+                                "type": "object"
+                            },
+                            "SourceUrl": {
+                                "description": "A URL that links to a page about the current finding in the security findings provider's solution.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "ThreatIntelIndicators": {
+                                "description": "Threat intel details related to a finding.",
+                                "items": {
+                                    "description": "Threat intel details related to a finding.",
+                                    "properties": {
+                                        "Category": {
+                                            "description": "The category of a threat intel indicator.",
+                                            "enum": [
+                                                "BACKDOOR",
+                                                "CARD_STEALER",
+                                                "COMMAND_AND_CONTROL",
+                                                "DROP_SITE",
+                                                "EXPLOIT_SITE",
+                                                "KEYLOGGER"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "LastObservedAt": {
+                                            "description": "The date/time of the last observation of a threat intel indicator.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "Source": {
+                                            "description": "The source of the threat intel.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "SourceUrl": {
+                                            "description": "The URL for more details from the source of the threat intel.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "Type": {
+                                            "description": "The type of a threat intel indicator.",
+                                            "enum": [
+                                                "DOMAIN",
+                                                "EMAIL_ADDRESS",
+                                                "HASH_MD5",
+                                                "HASH_SHA1",
+                                                "HASH_SHA256",
+                                                "HASH_SHA512",
+                                                "IPV4_ADDRESS",
+                                                "IPV6_ADDRESS",
+                                                "MUTEX",
+                                                "PROCESS",
+                                                "URL"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "Value": {
+                                            "description": "The value of a threat intel indicator.",
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "Title": {
+                                "description": "A finding's title.",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "Types": {
+                                "description": "<p>One or more finding types in the format of 'namespace/category/classifier' that classify a finding.</p> <p>Valid namespace values are: Software and Configuration Checks | TTPs | Effects | Unusual Behaviors | Sensitive Data Identifications</p>",
+                                "items": {
+                                    "pattern": ".*\\S.*",
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "UpdatedAt": {
+                                "description": "An ISO8601-formatted timestamp that indicates when the finding record was last updated by the security findings provider. ",
+                                "pattern": ".*\\S.*",
+                                "type": "string"
+                            },
+                            "UserDefinedFields": {
+                                "description": "A list of name/value string pairs associated with the finding. These are custom, user-defined fields added to a finding. ",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "pattern": ".*\\S.*",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "VerificationState": {
+                                "description": "Indicates the veracity of a finding. ",
+                                "enum": [
+                                    "UNKNOWN",
+                                    "TRUE_POSITIVE",
+                                    "FALSE_POSITIVE",
+                                    "BENIGN_POSITIVE"
+                                ],
+                                "type": "string"
+                            },
+                            "WorkflowState": {
+                                "description": "The workflow state of a finding. ",
+                                "enum": [
+                                    "NEW",
+                                    "ASSIGNED",
+                                    "IN_PROGRESS",
+                                    "DEFERRED",
+                                    "RESOLVED"
+                                ],
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "SchemaVersion",
+                            "Id",
+                            "ProductArn",
+                            "GeneratorId",
+                            "AwsAccountId",
+                            "Types",
+                            "CreatedAt",
+                            "UpdatedAt",
+                            "Severity",
+                            "Resources"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "Findings"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,2175 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "Filters": {
+                    "description": "A collection of attributes that specify what findings you want to update.",
+                    "properties": {
+                        "AwsAccountId": {
+                            "description": "The AWS account ID in which a finding is generated.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "CompanyName": {
+                            "description": "The name of the findings provider (company) that owns the solution (product) that generates findings.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ComplianceStatus": {
+                            "description": "Exclusive to findings that are generated as the result of a check run against a specific rule in a supported standard (for example, AWS CIS Foundations). Contains compliance-related finding details.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "Confidence": {
+                            "description": "A finding's confidence. Confidence is defined as the likelihood that a finding accurately identifies the behavior or issue that it was intended to identify. Confidence is scored on a 0-100 basis using a ratio scale. 0 equates zero percent confidence and 100 equates to 100 percent confidence.",
+                            "items": {
+                                "description": "A number filter for querying findings.",
+                                "properties": {
+                                    "Eq": {
+                                        "description": "Represents the \"equal to\" condition to be applied to a single field when querying for findings.",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Gte": {
+                                        "description": "Represents the \"greater than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Lte": {
+                                        "description": "Represents the \"less than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "CreatedAt": {
+                            "description": "An ISO8601-formatted timestamp that indicates when the potential security issue captured by a finding was created by the security findings provider.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "Criticality": {
+                            "description": "The level of importance assigned to the resources associated with the finding. A score of 0 means the underlying resources have no criticality, and a score of 100 is reserved for the most critical resources.",
+                            "items": {
+                                "description": "A number filter for querying findings.",
+                                "properties": {
+                                    "Eq": {
+                                        "description": "Represents the \"equal to\" condition to be applied to a single field when querying for findings.",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Gte": {
+                                        "description": "Represents the \"greater than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Lte": {
+                                        "description": "Represents the \"less than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "Description": {
+                            "description": "A finding's description.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "FirstObservedAt": {
+                            "description": "An ISO8601-formatted timestamp that indicates when the potential security issue captured by a finding was first observed by the security findings provider.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "GeneratorId": {
+                            "description": "This is the identifier for the solution-specific component (a discrete unit of logic) that generated a finding. In various security findings provider's solutions, this generator can be called a rule, a check, a detector, a plug-in, etc.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "Id": {
+                            "description": "The security findings provider-specific identifier for a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "Keyword": {
+                            "description": "A keyword for a finding.",
+                            "items": {
+                                "description": "A keyword filter for querying findings.",
+                                "properties": {
+                                    "Value": {
+                                        "description": "A value for the keyword.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "LastObservedAt": {
+                            "description": "An ISO8601-formatted timestamp that indicates when the potential security issue captured by a finding was most recently observed by the security findings provider.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "MalwareName": {
+                            "description": "The name of the malware that was observed.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "MalwarePath": {
+                            "description": "The filesystem path of the malware that was observed.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "MalwareState": {
+                            "description": "The state of the malware that was observed.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "MalwareType": {
+                            "description": "The type of the malware that was observed.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkDestinationDomain": {
+                            "description": "The destination domain of network-related information about a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkDestinationIpV4": {
+                            "description": "The destination IPv4 address of network-related information about a finding.",
+                            "items": {
+                                "description": "The IP filter for querying findings.&gt;",
+                                "properties": {
+                                    "Cidr": {
+                                        "description": "Finding's CIDR value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkDestinationIpV6": {
+                            "description": "The destination IPv6 address of network-related information about a finding.",
+                            "items": {
+                                "description": "The IP filter for querying findings.&gt;",
+                                "properties": {
+                                    "Cidr": {
+                                        "description": "Finding's CIDR value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkDestinationPort": {
+                            "description": "The destination port of network-related information about a finding.",
+                            "items": {
+                                "description": "A number filter for querying findings.",
+                                "properties": {
+                                    "Eq": {
+                                        "description": "Represents the \"equal to\" condition to be applied to a single field when querying for findings.",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Gte": {
+                                        "description": "Represents the \"greater than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Lte": {
+                                        "description": "Represents the \"less than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkDirection": {
+                            "description": "Indicates the direction of network traffic associated with a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkProtocol": {
+                            "description": "The protocol of network-related information about a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkSourceDomain": {
+                            "description": "The source domain of network-related information about a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkSourceIpV4": {
+                            "description": "The source IPv4 address of network-related information about a finding.",
+                            "items": {
+                                "description": "The IP filter for querying findings.&gt;",
+                                "properties": {
+                                    "Cidr": {
+                                        "description": "Finding's CIDR value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkSourceIpV6": {
+                            "description": "The source IPv6 address of network-related information about a finding.",
+                            "items": {
+                                "description": "The IP filter for querying findings.&gt;",
+                                "properties": {
+                                    "Cidr": {
+                                        "description": "Finding's CIDR value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkSourceMac": {
+                            "description": "The source media access control (MAC) address of network-related information about a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NetworkSourcePort": {
+                            "description": "The source port of network-related information about a finding.",
+                            "items": {
+                                "description": "A number filter for querying findings.",
+                                "properties": {
+                                    "Eq": {
+                                        "description": "Represents the \"equal to\" condition to be applied to a single field when querying for findings.",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Gte": {
+                                        "description": "Represents the \"greater than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Lte": {
+                                        "description": "Represents the \"less than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NoteText": {
+                            "description": "The text of a note.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NoteUpdatedAt": {
+                            "description": "The timestamp of when the note was updated.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "NoteUpdatedBy": {
+                            "description": "The principal that created a note.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ProcessLaunchedAt": {
+                            "description": "The date/time that the process was launched.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ProcessName": {
+                            "description": "The name of the process.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ProcessParentPid": {
+                            "description": "The parent process ID.",
+                            "items": {
+                                "description": "A number filter for querying findings.",
+                                "properties": {
+                                    "Eq": {
+                                        "description": "Represents the \"equal to\" condition to be applied to a single field when querying for findings.",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Gte": {
+                                        "description": "Represents the \"greater than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Lte": {
+                                        "description": "Represents the \"less than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ProcessPath": {
+                            "description": "The path to the process executable.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ProcessPid": {
+                            "description": "The process ID.",
+                            "items": {
+                                "description": "A number filter for querying findings.",
+                                "properties": {
+                                    "Eq": {
+                                        "description": "Represents the \"equal to\" condition to be applied to a single field when querying for findings.",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Gte": {
+                                        "description": "Represents the \"greater than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Lte": {
+                                        "description": "Represents the \"less than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ProcessTerminatedAt": {
+                            "description": "The date/time that the process was terminated.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ProductArn": {
+                            "description": "The ARN generated by Security Hub that uniquely identifies a third-party company (security findings provider) once this provider's product (solution that generates findings) is registered with Security Hub.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ProductFields": {
+                            "description": "A data type where security findings providers can include additional solution-specific details that are not part of the defined AwsSecurityFinding format.",
+                            "items": {
+                                "description": "The map filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a key value when querying for findings with a map filter.",
+                                        "enum": [
+                                            "CONTAINS"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Key": {
+                                        "description": "The key of the map filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The value for the key in the map filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ProductName": {
+                            "description": "The name of the solution (product) that generates findings.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "RecommendationText": {
+                            "description": "The recommendation of what to do about the issue described in a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "RecordState": {
+                            "description": "The updated record state for the finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "RelatedFindingsId": {
+                            "description": "The solution-generated identifier for a related finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "RelatedFindingsProductArn": {
+                            "description": "The ARN of the solution that generated a related finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsEc2InstanceIamInstanceProfileArn": {
+                            "description": "The IAM profile ARN of the instance.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsEc2InstanceImageId": {
+                            "description": "The Amazon Machine Image (AMI) ID of the instance.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsEc2InstanceIpV4Addresses": {
+                            "description": "The IPv4 addresses associated with the instance.",
+                            "items": {
+                                "description": "The IP filter for querying findings.&gt;",
+                                "properties": {
+                                    "Cidr": {
+                                        "description": "Finding's CIDR value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsEc2InstanceIpV6Addresses": {
+                            "description": "The IPv6 addresses associated with the instance.",
+                            "items": {
+                                "description": "The IP filter for querying findings.&gt;",
+                                "properties": {
+                                    "Cidr": {
+                                        "description": "Finding's CIDR value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsEc2InstanceKeyName": {
+                            "description": "The key name associated with the instance.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsEc2InstanceLaunchedAt": {
+                            "description": "The date/time the instance was launched.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsEc2InstanceSubnetId": {
+                            "description": "The identifier of the subnet in which the instance was launched.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsEc2InstanceType": {
+                            "description": "The instance type of the instance.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsEc2InstanceVpcId": {
+                            "description": "The identifier of the VPC in which the instance was launched.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsIamAccessKeyCreatedAt": {
+                            "description": "The creation date/time of the IAM access key related to a finding.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsIamAccessKeyStatus": {
+                            "description": "The status of the IAM access key related to a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsIamAccessKeyUserName": {
+                            "description": "The user associated with the IAM access key related to a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsS3BucketOwnerId": {
+                            "description": "The canonical user ID of the owner of the S3 bucket.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceAwsS3BucketOwnerName": {
+                            "description": "The display name of the owner of the S3 bucket.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceContainerImageId": {
+                            "description": "The identifier of the image related to a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceContainerImageName": {
+                            "description": "The name of the image related to a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceContainerLaunchedAt": {
+                            "description": "The date/time that the container was started.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceContainerName": {
+                            "description": "The name of the container related to a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceDetailsOther": {
+                            "description": "The details of a resource that does not have a specific sub-field for the resource type defined.",
+                            "items": {
+                                "description": "The map filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a key value when querying for findings with a map filter.",
+                                        "enum": [
+                                            "CONTAINS"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Key": {
+                                        "description": "The key of the map filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The value for the key in the map filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceId": {
+                            "description": "The canonical identifier for the given resource type.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourcePartition": {
+                            "description": "The canonical AWS partition name to which the region is assigned.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceRegion": {
+                            "description": "The canonical AWS external region name where this resource is located.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceTags": {
+                            "description": "A list of AWS tags associated with a resource at the time the finding was processed.",
+                            "items": {
+                                "description": "The map filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a key value when querying for findings with a map filter.",
+                                        "enum": [
+                                            "CONTAINS"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Key": {
+                                        "description": "The key of the map filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The value for the key in the map filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ResourceType": {
+                            "description": "Specifies the type of the resource for which details are provided.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "SeverityLabel": {
+                            "description": "The label of a finding's severity.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "SeverityNormalized": {
+                            "description": "The normalized severity of a finding.",
+                            "items": {
+                                "description": "A number filter for querying findings.",
+                                "properties": {
+                                    "Eq": {
+                                        "description": "Represents the \"equal to\" condition to be applied to a single field when querying for findings.",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Gte": {
+                                        "description": "Represents the \"greater than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Lte": {
+                                        "description": "Represents the \"less than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "SeverityProduct": {
+                            "description": "The native severity as defined by the security findings provider's solution that generated the finding.",
+                            "items": {
+                                "description": "A number filter for querying findings.",
+                                "properties": {
+                                    "Eq": {
+                                        "description": "Represents the \"equal to\" condition to be applied to a single field when querying for findings.",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Gte": {
+                                        "description": "Represents the \"greater than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    },
+                                    "Lte": {
+                                        "description": "Represents the \"less than equal\" condition to be applied to a single field when querying for findings. ",
+                                        "format": "double",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "SourceUrl": {
+                            "description": "A URL that links to a page about the current finding in the security findings provider's solution.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ThreatIntelIndicatorCategory": {
+                            "description": "The category of a threat intel indicator.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ThreatIntelIndicatorLastObservedAt": {
+                            "description": "The date/time of the last observation of a threat intel indicator.",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ThreatIntelIndicatorSource": {
+                            "description": "The source of the threat intel.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ThreatIntelIndicatorSourceUrl": {
+                            "description": "The URL for more details from the source of the threat intel.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ThreatIntelIndicatorType": {
+                            "description": "The type of a threat intel indicator.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "ThreatIntelIndicatorValue": {
+                            "description": "The value of a threat intel indicator.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "Title": {
+                            "description": "A finding's title.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "Type": {
+                            "description": "A finding type in the format of 'namespace/category/classifier' that classifies a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "UpdatedAt": {
+                            "description": "An ISO8601-formatted timestamp that indicates when the finding record was last updated by the security findings provider. ",
+                            "items": {
+                                "description": "A date filter for querying findings.",
+                                "properties": {
+                                    "DateRange": {
+                                        "description": "A date range for the date filter.",
+                                        "properties": {
+                                            "Unit": {
+                                                "description": "A date range unit for the date filter.",
+                                                "enum": [
+                                                    "DAYS"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "description": "A date range value for the date filter.",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "End": {
+                                        "description": "An end date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Start": {
+                                        "description": "A start date for the date filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "UserDefinedFields": {
+                            "description": "A list of name/value string pairs associated with the finding. These are custom, user-defined fields added to a finding. ",
+                            "items": {
+                                "description": "The map filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a key value when querying for findings with a map filter.",
+                                        "enum": [
+                                            "CONTAINS"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Key": {
+                                        "description": "The key of the map filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The value for the key in the map filter.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "VerificationState": {
+                            "description": "Indicates the veracity of a finding. ",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "WorkflowState": {
+                            "description": "The workflow state of a finding.",
+                            "items": {
+                                "description": "A string filter for querying findings.",
+                                "properties": {
+                                    "Comparison": {
+                                        "description": "Represents the condition to be applied to a string value when querying for findings. ",
+                                        "enum": [
+                                            "EQUALS",
+                                            "CONTAINS",
+                                            "PREFIX"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "Value": {
+                                        "description": "The string filter value.",
+                                        "pattern": ".*\\S.*",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "Note": {
+                    "description": "The updated note for the finding.",
+                    "properties": {
+                        "Text": {
+                            "description": "The updated note text.",
+                            "pattern": ".*\\S.*",
+                            "type": "string"
+                        },
+                        "UpdatedBy": {
+                            "description": "The principal that updated the note.",
+                            "pattern": ".*\\S.*",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Text",
+                        "UpdatedBy"
+                    ],
+                    "type": "object"
+                },
+                "RecordState": {
+                    "description": "The updated record state for the finding.",
+                    "enum": [
+                        "ACTIVE",
+                        "ARCHIVED"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Filters"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
